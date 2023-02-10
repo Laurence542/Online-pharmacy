@@ -1,0 +1,81 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<style>
+.column {
+  float: left;
+  width: 33.33%;
+  text-align:center
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  text-align:center
+}
+
+.column {
+  float: left;
+  text-align:center
+}
+
+.left, .right {
+  width: 25%;
+  text-align:center
+}
+
+.middle {
+  width: 50%;
+  text-align:center
+}
+
+</style> 
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <img style='max-width:450px' src="{{post.image.url}}">
+        <br>
+        <br>
+        <h2>{% block title %} {{ object.title }} {% endblock title %}</h2>
+        <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
+        <p class="card-text ">{{ object.content | safe }}</p>
+       <br>
+      <h2>Available pharmacist with their product</h2>
+    <br>
+    <div class="row">
+      <div class="column">
+        <h5>Pharmacist name</h5>
+        <p>{{post.Clinic1}}</p>
+        <p>{{post.Clinic2}}</p>
+        <p>{{post.Clinic3}}</p>
+        <p>{{post.Clinic4}}</p>
+      </div>
+      <div class="column">
+        <h5>Medicine price</h5>
+        <p>Ksh{{post.price1}}</p>
+        <p>Ksh{{post.price2}}</p>
+        <p>Ksh{{post.price3}}</p>
+        <p>Ksh{{post.price4}}</p>
+      </div>
+      <div class="column">
+        <h5>Pharmacist Number</h5>
+          <p>{{post.phone1}}</p>
+          <p>{{post.phone2}}</p>
+          <p>{{post.phone3}}</p>
+          <p>{{post.phone4}}</p>
+      </div>
+    </div>
+
+  </div>
+  </div>
+   
+    {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+  </div>
+</div>
+
+
+{% endblock content %}
